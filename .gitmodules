@@ -1,6 +1,0 @@
-[submodule "esp32c3"]
-	path = esp32c3
-	url = git@loantovalue.webhop.me:esp32c3.git
-[submodule "picow"]
-	path = picow
-	url = git@loantovalue.webhop.me:picow.git
