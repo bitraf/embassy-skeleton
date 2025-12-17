@@ -1,0 +1,43 @@
+[package]
+name = "picow"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+embassy-embedded-hal = { version = "0.3.0", features = ["defmt"] }
+embassy-sync = { version = "0.6.2", features = ["defmt"] }
+embassy-executor = { version = "0.7.0", features = ["task-arena-size-98304", "arch-cortex-m", "executor-thread", "executor-interrupt", "defmt"] }
+embassy-time = { version = "0.4", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-time-driver = "0.2.0"
+embassy-rp = { version = "0.3.1", features = ["defmt", "unstable-pac", "time-driver", "critical-section-impl", "rp2040"] }
+embassy-net = { version = "0.6.0", features = ["defmt", "tcp", "udp", "raw", "dhcpv4", "medium-ethernet", "dns", "mdns", "proto-ipv4", "proto-ipv6", "multicast"] }
+cyw43 = { version = "0.3.0", features = ["defmt", "firmware-logs", "bluetooth"] }
+cyw43-pio = { version = "0.3.0", features = ["defmt"] }
+defmt = "0.3"
+defmt-rtt = "0.4"
+format_no_std = "1.2.0"
+hex = { version = "0.4.3", default-features = false }
+reqwless = { version = "0.13.0", features = ["defmt"] }
+cortex-m = { version = "0.7.6", features = ["inline-asm"] }
+cortex-m-rt = "0.7.0"
+panic-probe = { version = "0.3", features = ["print-defmt"] }
+static_cell = "2.1"
+portable-atomic = { version = "1.5", features = ["critical-section"] }
+rand = { version = "0.8.5", default-features = false }
+
+[[bin]]
+name = "picow"
+test = false
+bench = false
+
+[profile.release]
+lto = true          # Enable link time optimization.
+opt-level = 'z'     # Optimize for size.
+codegen-units = 1   # Reduce parallel code generation
+panic = "abort"     # No unwinding code
+debug = 2
+
+[profile.dev]
+debug = 2
+lto = true
+opt-level = "z"
