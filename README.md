@@ -1,7 +1,7 @@
 # Workshop in Embedded Rust with Embassy
 _Hosted by Dag Bjørndal in Oslo on December 9th 2025_
 
-The accompanying firmware code from this workshop illustrates use of the [Embassy](https://embassy.dev/book/index.html) framework. It is intended as skeleton demonstration of cooperative multitasking. The following devices are featured:
+The accompanying firmware code from this workshop illustrates use of the [Embassy](https://embassy.dev/book/index.html) framework. It is intended as a bare skeleton demonstration of cooperative multitasking. The following devices are featured:
 * Raspberry Pi Pico W (ARM)
 * Esp32c3 OLED (Risc-V)
 
@@ -11,15 +11,20 @@ The accompanying firmware code from this workshop illustrates use of the [Embass
 ## Firmware Features
 Both devices do the following:
 * The device is initialized in **Embassy** and tasks are started
-* The device connects to Wi-Fi using SSID and PSK read from src directory
-* The onboard LED is blinked every second
-* A small "web page" is retrieved from the the Internet every 10 seconds, and its content is logged
-* Logging information is continously sent to the host computer
+* The device **connects to Wi-Fi** using SSID and PSK read from src directory
+* The onboard **LED is blinked** every second
+* A small **web page is retrieved** from the the Internet every 10 seconds, and its content is logged
+* **Logging** information is continously sent to the host computer
 
 ## Key Differences
-The Esp32 device has at small OLED screen which is activated and written to. Dynamic memory allocation using heap is demonstrated on this device. The Esp32 device is connected directly to the host computer via USB. The Pico W device demonstrates using stack memory allocation only. This approach might be considered best practice. The Pico W is connected to the host computer via a programming probe (Picoprobe, ST-Link or Segger). The device uses _Defmt_ to minimize bandwidth demand when logging to the host computer.
+The Esp32 device has a small OLED screen which is activated and written to. Dynamic memory allocation using heap is demonstrated on this device. The Esp32 device is connected directly to the host computer via USB. The Pico W device demonstrates using stack memory allocation only. This approach might be considered best practice. The Pico W is connected to the host computer via a programming probe (Picoprobe, ST-Link or Segger). The device uses _defmt_ to minimize bandwidth demand when logging to the host computer.
 
-## Prerequesites to run on Esp32 OLED
+## Prerequisites to run on Esp32 C3 OLED
 * Install Rust. Follow the instructions on [The Rust Programming Language](https://doc.rust-lang.org/book/ch01-01-installation.html).
-* Install espflash with
->cargo install espflash --locked
+* Install espflash with 'cargo install espflash --locked'.
+* Connect device to host computer via USB cable.
+
+## Prerequisites to run on Pico W
+* Install Rust. Follow the instructions on [The Rust Programming Language](https://doc.rust-lang.org/book/ch01-01-installation.html).
+* Install probe-rs. Follow the instructions on [probe-rs](https://probe.rs/docs/getting-started/installation/).
+* Connect device to programming probe (Picoprobe, ST-Link or segger). Typically SWCLK, SWDIO, 5V and GND are needed. Connect programming probe to host computer.
