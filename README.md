@@ -6,6 +6,7 @@ The accompanying firmware code from this workshop illustrates use of the [Embass
 * Esp32c3 OLED (Risc-V)
 
 | ![Raspberry Pi Pico W](./assets/picow.jpg "Raspberry Pi Pico W") | ![Esp32 C3 OLED](./assets/esp32c3.jpg "Esp32 C3 OLED") |
+|----|----|
 
 ## Firmware Features
 Both devices do the following:
